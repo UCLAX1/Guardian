@@ -14,21 +14,22 @@ import zlib
 
 
 
-def getResult(path="LinkLaser/1.jpg"):
-    result = performDetect(imagePath=path, configPath = "./cfg/yolov3-tiny.cfg", weightPath = "yolov3-tiny.weights", showImage= False, makeImageOnly = False, initOnly= False)
-    return result
+def getLinkCoords(img):
+    yolo_result = performDetect(img, configPath = "./cfg/yolov3-tiny.cfg", 
+                                weightPath = "yolov3-tiny.weights", showImage= False, 
+                                makeImageOnly = False, initOnly= False)
 
-
-
-def getLinkCoords(file):
-    yolo_result = getResult(file)
-    if yolo_result == []:
-        return [0, 0]
-    yolo_data = str(yolo_result[0]).replace("(", "").replace(")", "").replace(" ", "")
-    data_list = yolo_data.split(",")
-    link_x = int(float(data_list[2]))
-    link_y = int(float(data_list[3]))
-    return [link_x, link_y]
+    # maybe default to -1, -1 to make it unambiguous?
+    coords = [0, 0] # link's center x, y
+    
+    # extract coordinates from output
+    # only works for showImage=False
+    for detected in yolo_result:
+        if detected[0] == 'person':
+            coords[0] = detected[2][0]
+            coords[1] = detected[2][1]
+    
+    return coords
 
 
 
@@ -90,9 +91,8 @@ def getLaserCoords(img):
     return coord_center
 
 
-def getLocations(file):
-    img = cv2.imread(file)
-    link_coord = getLinkCoords(file)
+def getLocations(img):
+    link_coord = getLinkCoords(img)
     laser_coord = getLaserCoords(img)
     return "Position - Link: " + str(link_coord[0]) + "," + str(link_coord[1]) + ". Laser: " + str(laser_coord[0]) + "," + str(laser_coord[1])
 
@@ -119,18 +119,21 @@ controls_conn, controls_addr = controls_socket.accept()
 
 
 while True:
-    file = "received_image.jpg"
-    with open(file, 'wb') as f:
-        while True:
-            data = camera_conn.recv(1024)
-            if "breakbreakbreakbreakbreak" in str(data):
-                f.write(data.replace("breakbreakbreakbreakbreak", ""))
-                f.close()
-                break
-            f.write(data)
+    img_str = ""
+    while True:
+        data = camera_conn.recv(1024)
+        if "breakbreakbreakbreakbreak" in str(data):
+            img_str += data.replace("breakbreakbreakbreakbreak", ""))
+            break
+        imgstr += data
     print("Received Image")
-
-    location_data = getLocations(file)
+    
+    # convert from string to opencv image
+    # not 100% sure this works - ben
+    nparr = np.fromstring(img_str, np.uint8)
+    img = cv2.imdecode(nparr)
+    
+    location_data = getLocations(img)
     print(location_data)
     controls_conn.send(location_data)
     print("Sent Position Data")

@@ -3,6 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 UserName: admin@g.ucla.edu
 Password: X1ROBOTICS
 
+First run python server and the react-app (npm start), then run ws-server.js to display whatever image you passed the python server on the feed.
+TODO: Figure out how to organize files and write package.json so that the react-app and ws-server.js can be run concurrently.
+
 ## Available Scripts
 
 In the project directory, you can run:

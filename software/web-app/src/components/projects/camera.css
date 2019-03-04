@@ -1,0 +1,18 @@
+/* camera buttons */
+@font-face {
+    font-family: Zelda;
+    src: url(//HyliaSerifBeta-Regular.otf);
+  }
+
+.button-container {
+    margin-top: 50px;
+}
+
+.button-container > button {
+    height: 30px;
+    color: rgb(23,39,39);
+    background-color: rgb(141,184,193);
+    border: none;
+    border-radius: 2px;
+    /* font-family: Zelda; */
+  }

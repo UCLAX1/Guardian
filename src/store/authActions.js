@@ -1,3 +1,5 @@
+
+
 export const signIn = (credentials) => {
     return (dispatch, _getState, {getFirebase}) => {
         const firebase=getFirebase();
@@ -6,6 +8,7 @@ export const signIn = (credentials) => {
             credentials.password
         ).then(()=>{
             dispatch({type: 'LOGIN_SUCCESS'})
+           
         }).catch((err)=>{
             dispatch({type:'LOGIN_ERROR', err});
         })

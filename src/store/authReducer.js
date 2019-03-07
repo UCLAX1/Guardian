@@ -1,6 +1,7 @@
 
+
 const initState={
-    authError:null
+    authError: 'undefined'
 }
 
 const authReducer = (state=initState, action) => {
@@ -9,7 +10,7 @@ const authReducer = (state=initState, action) => {
             console.log('error');
              return {
             ...state,
-            authError:'Login failed'
+            authError:'Login failed. Please try again'
              }
         case 'LOGIN_SUCCESS':
              console.log('success');
@@ -17,11 +18,16 @@ const authReducer = (state=initState, action) => {
              return {
             ...state,
             authError:null
-            
+          
              }
         case 'SIGNOUT_SUCCESS':
              console.log('signout');
-             return state;
+             
+             return {
+                authError:'undefined',
+                state
+             }
+             
         
         default:
              return state;

@@ -8,10 +8,12 @@ import {connect} from 'react-redux'
 const Navbar =(props)=> {
     const {auth}=props;
     const links=auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+    const home=auth.uid ? '/camera' : '/'; 
     return (
-        <nav className="nav-wrapper red darken-3">
+        <nav className="nav-wrapper darken-" style={{height: '120px'}}>
             <div className="container">
-                <Link to='/' className="brand-logo">Raspberry Pi Data</Link>
+                
+                <Link to={home} className="brand-logo" style={{color: 'rgb(167,253,250)', fontSize: '72px'}}>X1 Guardian</Link>
                 {links}
                 
             </div>

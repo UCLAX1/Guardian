@@ -2,14 +2,19 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signOut} from '../../store/authActions'
+import {Redirect} from 'react-router-dom'
 
 
 const SignedInLinks=(props)=> {
-
+    var styles = {
+        color: 'rgb(215,98,167)',
+        fontSize:'48px'
+      };
+   
+      
     return (
-        <ul className="right">
-            <li><a onClick={props.signOut}><NavLink to ='/signin'>Sign Out</NavLink></a></li>
-            <li><NavLink to='/camera'>Feed</NavLink></li>
+        <ul className="right" style={styles}>
+            <li><a onClick={<Redirect to='/camera'/>} > <NavLink to ='/signin' style={styles}>Sign Out</NavLink></a></li>
             
         </ul>
     )

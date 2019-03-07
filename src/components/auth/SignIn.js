@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {signIn} from '../../store/authActions'
+import {Redirect} from 'react-router-dom'
 
 class SignIn extends Component {
   state={
@@ -15,25 +16,32 @@ class SignIn extends Component {
   Sumbit = (e) => {
       e.preventDefault();
       this.props.signIn(this.state);
+    
+      //somehow redirect to feed
   }
   render() {
     const {authError}=this.props;
     return (
-      <div className="container">
-        <form className="white" onSubmit={this.Sumbit}>
-            <h5 className="grey-text text-darken-3">Sign In</h5>
-            <div className="input-field">
-                <label htmlFor="email">Email</label>
+         
+      <div className="container signin-wrapper" style={{width:'2000px'}}>
+        <form className="signin-box" onSubmit={this.Sumbit}>
+            <h5 className="signin-text text-lighten-3"style={{fontSize:'48px'}}>Sign In</h5>
+            <div className="input-field signin-input" style={{padding: '20px'}}>
+                <label htmlFor="email" style={{color:'navy', fontSize:'28px'}}>Email</label>
                 <input type="email" id="email" onChange={this.Change}/>
             </div>
-            <div className="input-field">
-                <label htmlFor="password">Password</label>
+            <div className="input-field signin-input" style={{padding:'20px'}}>
+                <label htmlFor="password" style={{color:'navy', fontSize:'28px'}}>Password</label>
                 <input type="password" id="password" onChange={this.Change}/>
             </div>
             <div className="input-field">
-                <button className="btn pink lighten-1 z-depth-0">Login</button>
+                <button className="btn signin-button lighten-1 z-depth-0" Text style={{fontSize: '32px',width:'620px', height:'80px'}
+                } >Login</button>
                 <div className="black-text center">
-                {authError ? <p>{authError}</p>:null} 
+                {authError ? <p style={{fontSize:'32px'}}>Login Failed. Please Try Again</p>:<Redirect to='/camera'/>} 
+                
+    
+                
                 </div>
             </div>
         </form>

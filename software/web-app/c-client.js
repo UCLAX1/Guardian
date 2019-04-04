@@ -26,6 +26,7 @@ client.on('data', function(data) {
         module.exports.emit('event', buf); //send img to ws-server
         client.write(buf); //this will be the base64 of the image
         console.log(buf);
+        buf = ""; //reset buffer
     }
      if (data.toString().endsWith('exit')) {
        client.destroy();

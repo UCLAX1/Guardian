@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "concurrently": "^4.1.0",
     "firebase": "^5.7.2",
     "react": "^16.7.0",
     "react-camera": "^0.1.3",
@@ -10,14 +11,15 @@
     "react-redux": "^6.0.0",
     "react-redux-firebase": "^2.2.6",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.5",
+    "react-scripts": "^2.1.8",
     "redux": "^4.0.1",
     "redux-firestore": "^0.6.2",
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "web-server": "node ws-server.js",
+    "start": "concurrently \"react-scripts start\" \"npm run web-server\" ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

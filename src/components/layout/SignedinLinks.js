@@ -8,13 +8,17 @@ import {Redirect} from 'react-router-dom'
 const SignedInLinks=(props)=> {
     var styles = {
         color: 'rgb(215,98,167)',
-        fontSize:'48px'
+        fontSize:'48px',
+        position: 'absolute',
+        left: '650px'
       };
    
-      
+
     return (
         <ul className="right" style={styles}>
-            <li><a onClick={<Redirect to='/camera'/>} > <NavLink to ='/signin' style={styles}>Sign Out</NavLink></a></li>
+            <li><a onClick={<Redirect to='/camera'/>} > <NavLink to ='/signin' style={styles}>
+            
+            Sign Out</NavLink></a></li>
             
         </ul>
     )

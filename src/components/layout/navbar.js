@@ -6,14 +6,22 @@ import {connect} from 'react-redux'
 
 
 const Navbar =(props)=> {
+
+
+    var styles = {
+        color: 'rgb(167,253,250)', 
+        fontSize: '72px',
+        position: 'absolute',
+        left: '200px'
+    }
     const {auth}=props;
     const links=auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
-    const home=auth.uid ? '/camera' : '/'; 
+    
     return (
         <nav className="nav-wrapper darken-" style={{height: '120px'}}>
             <div className="container">
                 
-                <Link to={home} className="brand-logo" style={{color: 'rgb(167,253,250)', fontSize: '72px'}}>X1 Guardian</Link>
+                <Link to={'/signin'} className="brand-logo" style={styles}>X1 Guardian</Link>
                 {links}
                 
             </div>

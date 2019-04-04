@@ -41,13 +41,14 @@ class App extends Component {
          <div className="row">
          <button className="col offset-m0" Text style={{height:"756px",width:"1000px"}}>Hi</button>
       
-         <button className="col offset-m2" Text style={{height:"40px",width:"200px",fontSize:"32px"}} >Auto Mode</button>
+         <button className="col offset-m2" Text style={{height:"40px",width:"200px",fontSize:"32px",position:"absolute",left:'1000px'}} >Auto Mode</button>
                 <div className="row" style={{height:"40px"}}></div>
-                <p className="col offset-m2" style={{color:"black",fontSize:"32px"}}>Motion Controls</p>
-                <div className="row" style={{height:"40px"}}></div>
-                <p className="col offset-m2"style={{color:"black",fontSize:"32px"}}>Head Turn: 
+                
+                <p className="col offset-m" style={{color:"black",fontSize:"32px",position:"absolute",left:'1200px'}}>Motion Controls</p>
+                <div className="row" style={{height:"60px"}}></div>
+                <p className="col offset-m2"style={{color:"black",fontSize:"32px",position:"absolute",left:'900px'}}>Head Turn: 
                   <input type="text" style={{width:"80px",textAlign:"center",fontSize:"32px"}}></input> deg
-                  <div style={{width:"20px"}}></div>
+                  <div style={{height:"20px"}}></div>
                   <button onClick={this.showMenu}>Head Turn Direction</button>
         
         {
@@ -69,10 +70,10 @@ class App extends Component {
         }
                   </p>
                  
-                <div className="row"style={{height:"40px"}}></div>
-                <p className="col offset-m2"style={{color:"black",fontSize:"32px"}}>Body Turn:
+                <div className="row"style={{height:"150px"}}></div>
+                <p className="col offset-m2"style={{color:"black",fontSize:"32px",position:'absolute',left:'900px'}}>Body Turn:
                 <input type="text" style={{width:"80px",textAlign:"center",fontSize:"32px"}}></input> deg
-                <div style={{width:"20px"}}></div>
+                <div style={{height:"20px"}}></div>
                   <button onClick={this.showMenu}>Body Turn Direction</button>
         
         {
@@ -93,14 +94,14 @@ class App extends Component {
             )
         }
                 </p> 
-              
-                <p className="col offset-m2"style={{color:"black",fontSize:"32px"}}>Distance: 
+               <div className="row" style={{height:'150px'}} />
+                <p className="col offset-m2"style={{color:"black",fontSize:"32px",position:'absolute',left:'900px'}}>Distance: 
                 <input type="text" style={{width:"80px",textAlign:"center",fontSize:"32px"}}></input> cm</p>
                 <div className="row"style={{height:"80px"}}></div>
                
-                <p className="col offset-m1"style={{color:"black",fontSize:"32px"}}>Movement Angle: 
+                <p className="col offset-m1"style={{color:"black",fontSize:"32px",position:'absolute',left:'900px'}}>Movement Angle: 
                 <input type="text" style={{width:"80px",textAlign:"center",fontSize:"32px"}}></input> deg
-                <div style={{width:"20px"}}></div>
+                <div className="col" style={{width:"30px"}}></div>
                   <button onClick={this.showMenu}>Movement Angle Direction</button>
         
         {
@@ -112,8 +113,8 @@ class App extends Component {
                   this.dropdownMenu = element;
                 }}
               >
-                <button className="col offset-m5" > Right </button>
-                <button className="col offset-m5"> Left </button>
+                <button className="col offset-m0" > Right </button>
+                <button className="col offset-m0"> Left </button>
               </div>
             )
             : (
@@ -121,13 +122,15 @@ class App extends Component {
             )
         }
                 </p>
-                <div className="row"style={{height:"40px"}}></div>
-                <p className="col offset-m0" style={{fontSize:"32px"}}>Image Size: 1000 x 756</p>
-                <button  className="col s12 m1 offset-m7" Text style={{height:"40px",width:"200px",fontSize:"32px"}}>Enter</button>
-                <div className="row"></div>
-                <p className="col offset-m0"style={{fontSize:"32px"}}>Link Position: x, y</p>
-                <div className="row"></div>
-                <p className="col offset-m0" style={{fontSize:"32px"}}>Laser Positions: x, y</p>
+                
+                <div className="row"style={{height:"60px"}}></div>
+                <button Text style={{height:"40px",width:"200px",fontSize:"32px", position:'absolute', top: '900px',left:'1200px'}}>Enter</button>
+                <p style={{fontSize:"32px", position:'absolute', top: '900px'}}>Image Size: 1000 x 756</p>
+                
+              
+                <p style={{fontSize:"32px",position:'absolute', top: '950px'}}>Link Position: x, y</p>
+                
+                <p style={{fontSize:"32px",position:'absolute', top: '1000px'}}>Laser Positions: x, y</p>
                 
             
 

@@ -12,7 +12,8 @@ const Navbar =(props)=> {
         color: 'rgb(167,253,250)', 
         fontSize: '72px',
         position: 'absolute',
-        left: '200px'
+        left: '200px',
+        top: '15px'
     }
     const {auth}=props;
     const links=auth.uid ? <SignedInLinks /> : <SignedOutLinks />;

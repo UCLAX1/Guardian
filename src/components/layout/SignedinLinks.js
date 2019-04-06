@@ -9,8 +9,9 @@ const SignedInLinks=(props)=> {
     var styles = {
         color: 'rgb(215,98,167)',
         fontSize:'48px',
-        position: 'absolute',
-        left: '650px'
+        position: 'sticky',
+        right: '100px',
+        top: '20px'
       };
    
 

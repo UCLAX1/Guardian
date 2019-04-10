@@ -23,6 +23,7 @@ class App extends Component {
         <div className="container">
           <div className="row button-container">
                   <div className="row"><img src={url} /></div>
+                  <div className="row">{url}</div>
                   <button className="col s8 offset-s2 m2 offset-m9">Tracking</button>
                   <div className="row"></div>
                   <button className="col s8 offset-s2 m2 offset-m9">Follow Link</button>

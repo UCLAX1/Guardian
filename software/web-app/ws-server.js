@@ -5,12 +5,11 @@ var curImg = "NOTHING YET";
 const bufEmitter = require('./c-client'); 
 bufEmitter.on('event', function(img) { //called each time a new image is recieved by client
     curImg = img;
-    console.log("Computer client says: " + curImg);
+    console.log("Current image: " + curImg);
 });
 
 io.on('connection', function (socket) {
-    setInterval(() => {socket.emit('event', curImg);}, 100);
-        
+    setInterval(() => {socket.emit('event', curImg); console.log('Emitting');}, 100);
 });
 
 const port = 1337

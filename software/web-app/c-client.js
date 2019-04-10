@@ -20,12 +20,10 @@ client.on('data', function(data) {
     var index = rec.indexOf("breakbreakbreak");
     if ( index === -1) {
         buf = buf + rec;
-        console.log('Client received: partial string');
     } else {
         buf = buf + rec.substring(0,index);
         module.exports.emit('event', buf); //send img to ws-server
         client.write(buf); //this will be the base64 of the image
-        console.log(buf);
         buf = ""; //reset buffer
     }
      if (data.toString().endsWith('exit')) {

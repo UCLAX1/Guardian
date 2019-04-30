@@ -18,15 +18,15 @@ class Camera extends Component {
       Dist: 0, //distance
       MovtDir: "L", //movement
       MovtDeg: 0,
-      LinkX: -1, //link pos
-      LinkY: -1,
-      LaserX: -1, //laser pos
-      LaserY: -1,
+      coords: ["0","0","0","0"],
       data: null
     }
 
     let self = this
     this.state.socket.on('image', curImg => { this.setState({img: curImg}) });
+    this.state.socket.on('coord', curCoord => { 
+      this.setState({coords: curCoord.split(',')});
+    });
   }
 
   /* Motion Controls */
@@ -69,8 +69,8 @@ class Camera extends Component {
                   <div className="col xs12 m6 image">
                     <img src={url} />
                     {/* All the info */}
-                    <p>Link Position: {this.state.LinkX}, {this.state.LinkY}</p>
-                    <p>Laser Position: {this.state.LaserX}, {this.state.LaserY}</p>
+                    <p>Link Position: {this.state.coords[0]}, {this.state.coords[1]}</p>
+                    <p>Laser Position: {this.state.coords[2]}, {this.state.coords[3]}</p>
                   </div>
                   <div className="col m4 push-m1 button-container">
 

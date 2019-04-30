@@ -6,7 +6,8 @@ import {signOut} from '../../store/authActions'
 
 const SignedInLinks=(props)=> {
     var styles = {
-        color: 'rgb(215,98,167)'
+        color: 'rgb(215,98,167)',
+        position: 'sticky',
       };
 
     return (

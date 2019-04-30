@@ -4,15 +4,65 @@
     src: url(//HyliaSerifBeta-Regular.otf);
   }
 
-.button-container {
-    margin-top: 50px;
+.container {
+  width: 100%;
+  max-width: 95%;
 }
 
-.button-container > button {
-    height: 30px;
-    color: rgb(23,39,39);
-    background-color: rgb(141,184,193);
-    border: none;
-    border-radius: 2px;
-    /* font-family: Zelda; */
-  }
+.dashboard {
+    margin-top: 5vh;
+}
+
+.image {
+  justify-content: left;
+}
+
+.image > img {
+  width: 45vw;
+  height: 34vw;
+}
+
+#auto {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: inline-block;
+  justify-content: flex-end;
+  height: 30px;
+  width: 100px;
+  color: rgb(23,39,39);
+  background-color: rgb(173, 224, 235);
+  border: none;
+  margin-left: 5%;
+  border-radius: 2px;
+}
+
+#auto:hover {
+  background-color: rgb(153, 197, 207);
+}
+
+.control-label {
+  text-align: right;
+}
+
+.control-category, .image > p {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.control-unit {
+  text-align: left;
+}
+
+.control-input > input, input:not([type]), input[type=text]:not(.browser-default)  {
+  border-bottom: 1px solid black;
+}
+
+.control-input > label, .control-input > p > label {
+  display: inline;
+  color: black;
+}
+
+.control-input > p {
+  display: inline;
+  margin-right: 5%;
+  color: black;
+}
+

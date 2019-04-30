@@ -8,7 +8,7 @@ class SignIn extends Component {
     this.state={
         email:'',
         password:''
-        }
+    }
   }
 
   Change =(e) => {
@@ -20,7 +20,7 @@ class SignIn extends Component {
   Submit = (e) => {
       e.preventDefault();
       this.props.signIn(this.state);
-      //somehow redirect to feed
+      this.props.history.push("/camera");
   }
 
   render() {

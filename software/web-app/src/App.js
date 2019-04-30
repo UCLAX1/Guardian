@@ -9,6 +9,12 @@ import { signOut } from './store/authActions';
 //var msg = require('./client.js');
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      home: props.uid
+    }
+  }
   render() {
     return (
       <BrowserRouter>

@@ -54,7 +54,7 @@ while True:
 
     return_data = c.recv(1024)
     print(return_data)
-    time.sleep(1)
+    time.sleep(.1)
     switch = not switch
 
 c.close()

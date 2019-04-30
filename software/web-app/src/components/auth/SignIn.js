@@ -20,7 +20,6 @@ class SignIn extends Component {
   Submit = (e) => {
       e.preventDefault();
       this.props.signIn(this.state);
-      this.props.history.push("/camera");
   }
 
   render() {
@@ -54,7 +53,7 @@ class SignIn extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        authError:state.auth.authError
+        authError: state.auth.authError
     }
 }
 const mapDispatchToProps =(dispatch) => {

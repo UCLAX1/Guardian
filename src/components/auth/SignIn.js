@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {signIn} from '../../store/authActions'
 import {Redirect} from 'react-router-dom'
 
+
 class SignIn extends Component {
   state={
     email:'',
@@ -38,7 +39,9 @@ class SignIn extends Component {
                 <button className="btn signin-button lighten-1 z-depth-0" Text style={{fontSize: '32px',width:'620px', height:'80px'}
                 } >Login</button>
                 <div className="black-text center">
-                {authError ? <p style={{fontSize:'32px'}}>Login Failed. Please Try Again</p>:<Redirect to='/camera'/>} 
+               
+                {authError ? <p style={{fontSize:'32px'}}>{authError}</p>:<Redirect to='/camera'/>} 
+                
                 
     
                 

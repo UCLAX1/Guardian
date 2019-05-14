@@ -1,9 +1,10 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {signOut} from '../../store/authActions'
 import {Redirect} from 'react-router-dom'
-
+import {Link} from 'react-router-dom'
+import { auth } from 'firebase';
+import {SignedOutLinks} from '../layout/SignedOutLinks'
 
 const SignedInLinks=(props)=> {
     var styles = {
@@ -17,9 +18,9 @@ const SignedInLinks=(props)=> {
 
     return (
         <ul className="right" style={styles}>
-            <li><a onClick={<Redirect to='/camera'/>} > <NavLink to ='/signin' style={styles}>
+           <Link to ='/signin' style={styles} onClick ={<Redirect to = '/signin' />  } >
             
-            Sign Out</NavLink></a></li>
+            Login Page</Link>
             
         </ul>
     )

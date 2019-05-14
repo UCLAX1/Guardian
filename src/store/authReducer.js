@@ -1,7 +1,7 @@
 
 
 const initState={
-    authError: 'undefined'
+    authError: '   '
 }
 
 const authReducer = (state=initState, action) => {
@@ -24,7 +24,6 @@ const authReducer = (state=initState, action) => {
              console.log('signout');
              
              return {
-                authError:'undefined',
                 state
              }
              

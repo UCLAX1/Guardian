@@ -16,13 +16,14 @@ const Navbar =(props)=> {
         top: '15px'
     }
     const {auth}=props;
-    const links=auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+    const links = auth ? <SignedInLinks /> : <SignedOutLinks />;
+    
     
     return (
         <nav className="nav-wrapper darken-" style={{height: '120px'}}>
             <div className="container">
                 
-                <Link to={'/signin'} className="brand-logo" style={styles}>X1 Guardian</Link>
+                <Link to={'/signin'} className="brand-logo" style={styles} >X1 Guardian</Link>
                 {links}
                 
             </div>

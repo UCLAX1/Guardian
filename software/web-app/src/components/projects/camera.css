@@ -39,6 +39,24 @@
   background-color: rgb(153, 197, 207);
 }
 
+#body {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: inline-block;
+  justify-content: flex-end;
+  height: 30px;
+  width: 100px;
+  color: rgb(23,39,39);
+  background-color: rgb(173, 224, 235);
+  border: none;
+  margin-left: 5%;
+  margin-top: 5%;
+  border-radius: 2px;
+}
+
+#body:hover {
+  background-color: rgb(153, 197, 207);
+}
+
 .control-label {
   text-align: right;
 }

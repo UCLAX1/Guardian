@@ -13,8 +13,7 @@ class Camera extends Component {
       AutoMode: "ON", //auto
       HeadDir: "L", //head
       HeadDeg: 0,
-      BodyDir: "L", //body
-      BodyDeg: 0,
+      BodyMode: "ON", //body
       Dist: 0, //distance
       MovtDir: "L", //movement
       MovtDeg: 0,
@@ -44,8 +43,14 @@ class Camera extends Component {
   handleHeadDir = (e) => { this.setState({HeadDir: e.target.value}); };
 
   /* Body */
-  handleBody = (e) =>{ this.setState({BodyDeg: e.target.value}); }
-  handleBodyDir = (e) => { this.setState({BodyDir: e.target.value}); };
+  ChangeBodyMode = () => {
+    if (this.state.BodyMode == "ON")
+      this.setState({BodyMode: "OFF"});
+    else
+      this.setState({BodyMode: "ON"});
+    this.state.data = this.state.BodyMode
+    this.state.socket.emit('submit', this.state.data);
+  }
 
   /* Dist */
   handleDist = (e) =>{ this.setState({Dist: e.target.value}); }
@@ -80,6 +85,16 @@ class Camera extends Component {
                       <div class="divider"></div>
                     </div>
 
+                    {/* Body */}
+                    <div className="row control-category">
+                      <div className="col m4 control-label">
+                        <p>Body Turn: </p>
+                      </div>
+                      <div className="col m6 control-input">
+                        <button class="waves-effect waves-light" onClick ={this.ChangeBodyMode} id="body">{this.state.BodyMode === "ON" ? "On" : "Off"}</button>
+                      </div>
+                    </div>
+
                     {/* Head */}
                     <div className="row control-category">
                       <div className="col m4 control-label">
@@ -96,29 +111,6 @@ class Camera extends Component {
                         <p>
                           <label>
                             <input name="head" class="with-gap" type="radio" checked={this.state.HeadDir == "R"} onChange={this.handleHeadDir} value="R"/>
-                            <span>Right</span>
-                          </label>
-                        </p>
-                      </div>
-                      <div className="col m1 control-unit"><p>deg</p></div>
-                    </div>
-
-                    {/* Body */}
-                    <div className="row control-category">
-                      <div className="col m4 control-label">
-                        <p>Body Turn: </p>
-                      </div>
-                      <div className="col m6 control-input">
-                        <input type="text" onChange ={this.handleBody} id="head-turn"></input><br/>
-                        <p>
-                          <label>
-                            <input name="body" class="with-gap" type="radio" checked={this.state.BodyDir == "L"} onChange={this.handleBodyDir} value="L"/>
-                            <span>Left</span>
-                          </label>
-                        </p>
-                        <p>
-                          <label>
-                            <input name="body" class="with-gap" type="radio" checked={this.state.BodyDir == "R"} onChange={this.handleBodyDir} value="R"/>
                             <span>Right</span>
                           </label>
                         </p>
@@ -162,7 +154,6 @@ class Camera extends Component {
                     <div className="row">
                       <div className="col m1"></div>
                       <button class="waves-effect waves-light" onClick ={this.onSubmit} id="auto">Submit</button>
-                      <button class="waves-effect waves-light" onClick ={this.ChangeAutoMode} id="auto">Auto {this.state.AutoMode === "ON" ? "On" : "Off"}</button>
                     </div>
                   </div>
                   

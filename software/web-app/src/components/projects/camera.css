@@ -39,7 +39,7 @@
   background-color: rgb(153, 197, 207);
 }
 
-#body {
+#head {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   display: inline-block;
   justify-content: flex-end;
@@ -53,7 +53,7 @@
   border-radius: 2px;
 }
 
-#body:hover {
+#head:hover {
   background-color: rgb(153, 197, 207);
 }
 

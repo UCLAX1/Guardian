@@ -11,9 +11,9 @@ class Camera extends Component {
       socket: openSocket('http://localhost:1337'), //socket
       img: null, //image
       AutoMode: "ON", //auto
-      HeadDir: "L", //head
-      HeadDeg: 0,
-      BodyMode: "ON", //body
+      HeadMode: "ON", //head
+      BodyDir: "L", //body
+      BodyDeg: 0,
       Dist: 0, //distance
       MovtDir: "L", //movement
       MovtDeg: 0,
@@ -34,23 +34,24 @@ class Camera extends Component {
       this.setState({AutoMode: "OFF"});
     else
       this.setState({AutoMode: "ON"});
-    var dataArr = [this.state.AutoMode,this.state.HeadDir,this.state.HeadDeg,this.state.BodyDir,this.state.BodyDeg,this.state.Dist,this.state.MovtDir,this.state.MovtDeg]
+    var dataArr = [this.state.BodyDir,this.state.BodyDeg,this.state.Dist,this.state.MovtDir,this.state.MovtDeg]
     this.state.data = dataArr.join();
     this.state.socket.emit('submit', this.state.data);
   }
-  /* Head */
-  handleHead = (e) => { this.setState({HeadDeg: e.target.value}); }
-  handleHeadDir = (e) => { this.setState({HeadDir: e.target.value}); };
 
-  /* Body */
-  ChangeBodyMode = () => {
-    if (this.state.BodyMode == "ON")
-      this.setState({BodyMode: "OFF"});
+  /* Head */
+  ChangeHeadMode = () => {
+    if (this.state.HeadMode == "ON")
+      this.setState({HeadMode: "OFF"});
     else
-      this.setState({BodyMode: "ON"});
-    this.state.data = this.state.BodyMode
+      this.setState({HeadMode: "ON"});
+    this.state.data = this.state.HeadMode;
     this.state.socket.emit('submit', this.state.data);
   }
+
+  /* Body */
+  HandleBody = (e) => { this.setState({BodyDeg: e.target.value}); }
+  handleBodyDir = (e) => { this.setState({BodyDir: e.target.value}); };
 
   /* Dist */
   handleDist = (e) =>{ this.setState({Dist: e.target.value}); }
@@ -61,7 +62,7 @@ class Camera extends Component {
 
   /* Submit */
   onSubmit = () => {
-    var dataArr = [this.state.AutoMode,this.state.HeadDir,this.state.HeadDeg,this.state.BodyDir,this.state.BodyDeg,this.state.Dist,this.state.MovtDir,this.state.MovtDeg]
+    var dataArr = [this.state.BodyDir,this.state.BodyDeg,this.state.Dist,this.state.MovtDir,this.state.MovtDeg]
     this.state.data = dataArr.join();
     this.state.socket.emit('submit', this.state.data);
   }
@@ -85,32 +86,32 @@ class Camera extends Component {
                       <div class="divider"></div>
                     </div>
 
-                    {/* Body */}
-                    <div className="row control-category">
-                      <div className="col m4 control-label">
-                        <p>Body Turn: </p>
-                      </div>
-                      <div className="col m6 control-input">
-                        <button class="waves-effect waves-light" onClick ={this.ChangeBodyMode} id="body">{this.state.BodyMode === "ON" ? "On" : "Off"}</button>
-                      </div>
-                    </div>
-
                     {/* Head */}
                     <div className="row control-category">
                       <div className="col m4 control-label">
                         <p>Head Turn: </p>
                       </div>
                       <div className="col m6 control-input">
-                        <input type="text" onChange ={this.handleHead} id="head-turn"></input><br/>
+                        <button class="waves-effect waves-light" onClick ={this.ChangeHeadMode} id="head">{this.state.HeadMode === "ON" ? "On" : "Off"}</button>
+                      </div>
+                    </div>
+
+                    {/* Body */}
+                    <div className="row control-category">
+                      <div className="col m4 control-label">
+                        <p>Body Turn: </p>
+                      </div>
+                      <div className="col m6 control-input">
+                        <input type="text" onChange ={this.HandleBody} id="body-turn"></input><br/>
                         <p>
                           <label>
-                            <input name="head" class="with-gap" type="radio" checked={this.state.HeadDir == "L"} onChange={this.handleHeadDir} value="L"/>
+                            <input name="body" class="with-gap" type="radio" checked={this.state.BodyDir == "L"} onChange={this.handleBodyDir} value="L"/>
                             <span>Left</span>
                           </label>
                         </p>
                         <p>
                           <label>
-                            <input name="head" class="with-gap" type="radio" checked={this.state.HeadDir == "R"} onChange={this.handleHeadDir} value="R"/>
+                            <input name="body" class="with-gap" type="radio" checked={this.state.BodyDir == "R"} onChange={this.handleBodyDir} value="R"/>
                             <span>Right</span>
                           </label>
                         </p>

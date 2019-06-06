@@ -1,0 +1,25 @@
+Given a leg object, the keyboard control should achieve:
+
+If pressing "W", the leg should continuously move according to 
+the internal stored path and current heading, until "W" is released.
+A small time delay between each path point is not necessary because 
+the inverse kinematic takes a non-trivial amount of time.
+
+Should involve leg.step()
+
+
+
+If pressing "A" or "D", the heading of the leg should turn counterclockwise
+and clockwise, respectively. The turn should be in a slow controlled manner,
+for instance, for every 3 seconds the button is pressed, the leg should turn 
+about 90 degrees.
+
+Should involve leg.turn() and some timing.
+
+
+
+If pressing "S", the leg should continuously move backwards according to 
+the internal stored path and current heading, opposite to the motion 
+when pressing "W".
+
+Can be accomplished by turning 180 degrees then using step like normal
